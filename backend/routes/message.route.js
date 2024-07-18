@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 import Message from "../models/message.model.js";
 import { JWT_SECRET } from "../config/index.js";
+import Conversation from "../models/conversation.model.js";
 
 const messageRoute = Router();
 
@@ -64,6 +65,19 @@ messageRoute.post("/message", async function(req, res) {
     } catch (error) {
         console.log("Message router error: ", error.message);
         return res.status(500).json({ message: "Internal server error!" });
+    }
+});
+
+
+messageRoute.post("/send-message", async function(req, res) {
+    try {
+        const { message } = await req.body;
+
+        return res.status(200).json({ message });
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Internal server error!" })
     }
 });
 

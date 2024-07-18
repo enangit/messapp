@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/sequelize.js";
+import User from "./user.model.js";
 
 const Message = sequelize.define("message",
     {
@@ -8,8 +9,20 @@ const Message = sequelize.define("message",
             allowNull: false,
             primaryKey: true,
         },
-        userId: {
+        senderId: {
             type: DataTypes.STRING,
+            references: {
+                model: User,
+                key: "id",
+            },
+            allowNull: false,
+        },
+        receipientId: {
+            type: DataTypes.STRING,
+            references: {
+                model: User,
+                key: "id",
+            },
             allowNull: false,
         },
         message: {
