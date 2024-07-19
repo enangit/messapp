@@ -24,7 +24,7 @@ userRoute.get("/profile", async function(req, res) {
                     id: userId
                 },
                 attributes: {
-                    exclude: ["password", "id", "createdAt", "updatedAt"]
+                    exclude: ["password", "createdAt", "updatedAt"]
                 }
 
             });

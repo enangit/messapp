@@ -37,11 +37,4 @@ const User = sequelize.define("user", {
     }
 });
 
-try {
-    await User.sync();
-    console.log(`User model synced success!`);
-} catch (err) {
-    console.log(`user.model.js error: ${err}`);
-}
-
 export default User;

@@ -13,7 +13,7 @@ async function connectToDatabase() {
         const databaseCreated = await connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_NAME}`);
 
         if (databaseCreated) {
-            console.log("Database has been created successfully!");
+            console.log("\nDatabase has been created successfully!");
         }
     } catch (err) {
         console.log("Error: ", err.message);

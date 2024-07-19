@@ -1,0 +1,5 @@
+.main__header .nav__links{
+    display: flex;
+    gap: 2rem;
+    border: 2px solid whitesmoke;
+}

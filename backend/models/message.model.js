@@ -1,31 +1,23 @@
 import { DataTypes } from "sequelize";
 import sequelize from "../database/sequelize.js";
-import User from "./user.model.js";
 
 const Message = sequelize.define("message",
     {
-        messageId: {
+        id: {
             type: DataTypes.STRING,
             allowNull: false,
             primaryKey: true,
         },
-        senderId: {
+        userId: {
             type: DataTypes.STRING,
-            references: {
-                model: User,
-                key: "id",
-            },
             allowNull: false,
         },
-        receipientId: {
+        conversationId: {
             type: DataTypes.STRING,
-            references: {
-                model: User,
-                key: "id",
-            },
             allowNull: false,
+
         },
-        message: {
+        content: {
             type: DataTypes.STRING,
             allowNull: false,
         }

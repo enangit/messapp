@@ -8,6 +8,7 @@ import sequelize from "./database/sequelize.js";
 import authRoute from "./routes/auth.route.js";
 import userRoute from "./routes/user.route.js";
 import messageRoute from "./routes/message.route.js";
+import addAssociations from "./utils/addSequelizeAssocitaions.js";
 
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
@@ -38,15 +39,10 @@ app.use(messageRoute);
 
 
 server.listen(B_PORT, async function() {
-    sequelize.authenticate()
-        .then(function() {
-            console.log("Sequelize database connection success!");
-        })
-        .catch(function(err) {
-            console.log(`Sequelize error, ${err?.message}`);
-        });
+    await sequelize.authenticate()
+    await addAssociations();
     await connectToDatabase();
-    console.log(`Listening on port: ${B_PORT}. App is running on http://localhost:${B_PORT}`);
+    console.log(`\nListening on port: ${B_PORT}. App is running on http://localhost:${B_PORT}\n`);
 })
 
 const socketsConnected = new Set();
